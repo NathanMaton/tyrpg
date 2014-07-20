@@ -1,12 +1,12 @@
 // Compiling: g++ -o tyrpg tyrpg.cpp -lncurses
-#include <ncurses.h> // used for screen
-#include <cstdlib> // for rand
-#include <iostream> // for rand seed (system time)
+#include <ncurses.h> // for screen
+#include <cstdlib> // rand
+#include <iostream> // rand seed (system time)
 #include <fstream> // used for working with save file
 
 struct creature { // used for both the player and monsters currently. initialise their attributes
 	int hp, dmg, lvl, lvlhp; // lvlhp = max hp
-	const char* name; // name is a char array pointer thing, ~a string
+	const char* name; // ~string
 };
 
 // initialise player and mobs
@@ -17,9 +17,9 @@ creature ogre;
 creature blueDragon;
 creature demigod;
 creature blackDragon;
-creature mHold; // used for fight(). holds monster that will be in a particular fight i think
+creature mHold; // used for fight(). holds mob that will be in a particular fight
 
-// call functions to initialise them and to help me see what order they are in/should be in
+// call functions to initialise them and see what order they are in/should be in
 void init();
 void initWithoutSave(); // init when no save file is present
 void load(); // load save
@@ -51,7 +51,7 @@ void init()
 	getmaxyx(stdscr,row,col); // get the number of rows and columns
 	scrollok(stdscr,true); // allow scrolling
 
-	mvprintw(row-2,0,"Welcome, adventurer.\nThere is a fearsome dragon in the land, and it is up to you to defeat him!\n");		
+	mvprintw(row-2,0,"Welcome, adventurer.\n");		
 	refresh(); // refresh screen
 	getch(); // pause for input (any input works)
 	town(); // load town
@@ -125,7 +125,7 @@ void cInit()
 	init_pair(3, COLOR_GREEN, COLOR_BLACK);
 	init_pair(1, COLOR_YELLOW, COLOR_BLACK);
 	init_pair(4, COLOR_CYAN, COLOR_BLACK);
-	//init_pair(4, COLOR_BLUE, COLOR_BLACK); //// in case i ever want these 2 colors
+	//init_pair(4, COLOR_BLUE, COLOR_BLACK);
 	//init_pair(1, COLOR_MAGENTA, COLOR_BLACK);
 }
 
@@ -255,8 +255,6 @@ void inn() {
 	player.hp = player.lvlhp;
 	printw("\nYou sleep well and wake up the next morning feeling rejuvenated.\n");
 	getch();
-	//printw("You return to town.\n");
-	//getch();
 	town();
 }
 
