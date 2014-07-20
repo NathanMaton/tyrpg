@@ -1,3 +1,4 @@
+// Compiling: g++ -o tyrpg tyrpg.cpp -lncurses
 #include <ncurses.h> // used for screen
 #include <cstdlib> // for rand
 #include <iostream> // for rand seed (system time)
