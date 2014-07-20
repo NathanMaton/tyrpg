@@ -53,7 +53,6 @@ void init()
 	mvprintw(row-2,0,"Welcome, adventurer.\nThere is a fearsome dragon in the land, and it is up to you to defeat him!\n");		
 	refresh(); // refresh screen
 	getch(); // pause for input (any input works)
-
 	town(); // load town
 }
 
@@ -76,7 +75,7 @@ void load() // load save
 			myfile >> player.hp; // reads hp from file to active game var player.hp
 			count++; // and move on to next var, etc
 		}
-		if (count == 1 && myfile.peek() == '\n') { // count = 1? read this var, we're on 							     // the second line of the save file now
+		if (count == 1 && myfile.peek() == '\n') { // count = 1? read this var, we're on the second line of the save file now
 			myfile >> player.dmg;
 			count++;
 		}
@@ -85,7 +84,7 @@ void load() // load save
 			count++;
 		}
 		if (count == 3 && myfile.peek() == '\n') {
-			myfile >> player.lvlhp; // .. should i rename lvlhp to maxhp? might make						  // more sense
+			myfile >> player.lvlhp; // .. should i rename lvlhp to maxhp? might make more sense
 			count++;
 		}
 	} // end while
@@ -135,7 +134,7 @@ void town() {
 	getch();
 	printw("Type e to try your luck in the wilderness outside this town, r to sleep in the inn, or q to quit: \n"); 
 	refresh();
-	loop: // used for gotos, not actually a loop unless called by a goto iirc
+	loop: // used for gotos, not actually a loop unless called by a goto
 	switch (getch()) {
 	case 'e':
 		monsPrep();
@@ -159,7 +158,7 @@ void town() {
 
 void monsPrep() {
 	srand (time(NULL));
-	switch(rand() % 6) { // switch (loop?) goes until a break i guess
+	switch(rand() % 6) {
 	case 0:
 		mHold = wolf;
 		break;
