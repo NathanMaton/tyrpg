@@ -114,7 +114,7 @@ void mInit()
 	demigod.name = "demi god";
 
 	blackDragon.hp = 30000;
-	blackDragon.dmg = 300;
+	blackDragon.dmg = 3;
 	blackDragon.name = "black dragon";
 }
 
@@ -195,6 +195,7 @@ void fight() {
 		refresh();
 		getch();
 		endwin();
+		// probably want to delete the save file here.
 	}
 	else{
 		printw("You are now at ");
